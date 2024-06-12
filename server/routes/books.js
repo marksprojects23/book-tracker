@@ -1,48 +1,48 @@
 // server/routes/books.js
-const express = require('express');
-const router = express.Router();
-const Book = require('../models/Book');
+const express = require('express');                                       	// We are using Express.js,
+const router = express.Router();        									// and its routing features,
+const Book = require('../models/Book'); 									// and using our Book.js model.
 
 // Create a new book
-router.post('/add', async (req, res) => {
-  const { title, author, description, publishedDate } = req.body;
-  const newBook = new Book({ title, author, description, publishedDate });
-  try {
-    const savedBook = await newBook.save();
-    res.status(201).json(savedBook);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
+router.post('/add', async (req, res) => {									// We use asynchronous requests for adding books via POST.
+  const { title, author, description, publishedDate } = req.body;			// The body is a JSON object consisting of these keys.
+  const newBook = new Book({ title, author, description, publishedDate });	// The information will be put into our Book.js model.
+  try {																		// Try,
+    const savedBook = await newBook.save();									// saving our stored book,
+    res.status(201).json(savedBook);										// and then contacting the database to see if it saved.
+  } catch (err) {															// Otherwise,
+    res.status(400).json({ message: err.message });							// relay the error message back
+  }																			// .
 });
 
 // Get all books
-router.get('/', async (req, res) => {
-  try {
-    const books = await Book.find();
-    res.json(books);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+router.get('/', async (req, res) => {										// We use asynchronous requests for displaying all books via GET.
+  try {																		// Try,
+    const books = await Book.find();										// finding any books
+    res.json(books);														// from our, hopefully, functioning cloud database.
+  } catch (err) {															// Otherwise,
+    res.status(500).json({ message: err.message });							// relay the error message back
+  }																			// .
 });
 
 // Update a book
-router.put('/update/:id', async (req, res) => {
-  try {
-    const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(updatedBook);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
-  }
+router.put('/update/:id', async (req, res) => {								// We use asynchronous requests to update a book's information via PUT and an identifier.
+  try {																		// Try,
+    const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });	// finding the book via its ID,
+    res.json(updatedBook);													// and then pushing it to the database.
+  } catch (err) {															// Otherwise,
+    res.status(400).json({ message: err.message });							// relay the error message back
+  }																			// .
 });
 
 // Delete a book
-router.delete('/delete/:id', async (req, res) => {
-  try {
-    await Book.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Book deleted' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+router.delete('/delete/:id', async (req, res) => {							// We use asynchronous requests to delete a book from the database via DELETE and an identifier.
+  try {																		// Try,
+    await Book.findByIdAndDelete(req.params.id);							// finding and deleting the book via its ID,
+    res.json({ message: 'Book deleted' });									// and then relaying that the book has been deleted.
+  } catch (err) {															// Otherwise,
+    res.status(500).json({ message: err.message });							// relay the error message back
+  }																			// .
 });
 
-module.exports = router;
+module.exports = router;													// Our routes are done.
