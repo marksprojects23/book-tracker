@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -8,7 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/booktracker', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -23,6 +24,9 @@ db.once('open', () => {
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+const booksRouter = require('./routes/books');
+app.use('/books', booksRouter);
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
