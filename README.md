@@ -42,5 +42,3 @@ I used Visual Studio Code (VSC) as my code editor along with various extensions 
 - Enhance the user interface with better styling and usability improvements.
 - Add filtering and sorting options for the book list.
 - Integrate additional features such as book ratings and reviews.
-- Improve error handling and validation both on the client and server sides.
-- Optimize the application for better performance and scalability.
