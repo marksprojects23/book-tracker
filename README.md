@@ -6,7 +6,13 @@ For this project, I created a book tracker web application using the MERN stack 
 
 The primary motivation behind this software was to prove I can implement cloud databases and to dive deeper into the MERN stack, a technology stack I've been interested in for a while. It also served as a test of my coding foundations, allowing me to explore various language features and libraries while solving a real-world problem: simplifying book tracking.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/Mqh_ZL8z4oE)
+
+# Cloud Database
+
+I used MongoDB Atlas as the cloud database for this project. MongoDB Atlas is a fully-managed cloud database service that handles all the complexities of deploying, managing, and healing deployments in the cloud.
+
+The database structure consists of collections for storing book data. Each book document includes fields such as title, author, description, and even date published. This schema allows for efficient management and retrieval of book records.
 
 # Development Environment
 
