@@ -6,7 +6,7 @@ For this project, I created a book tracker web application using the MERN stack 
 
 The primary motivation behind this software was to prove I can implement cloud databases and to dive deeper into the MERN stack, a technology stack I've been interested in for a while. It also served as a test of my coding foundations, allowing me to explore various language features and libraries while solving a real-world problem: simplifying book tracking.
 
-[Software Demo Video](https://youtu.be/Mqh_ZL8z4oE)
+[Software Demo Video](https://youtu.be/v_yhPNEzN64)
 
 # Cloud Database
 
